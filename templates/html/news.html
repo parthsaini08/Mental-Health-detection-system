@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Quiz Tests</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/bootstrap.min.css')}}">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/style.css')}}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{{url_for('.static', filename='css/responsive.css')}}">
+      <!-- fevicon -->
+      <link rel="icon" href="{{url_for('.static', filename='images/fevicon.png')}}" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{{url_for('.static', filename='css/jquery.mCustomScrollbar.min.css')}}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- owl stylesheets --> 
+      <link rel="stylesheet" href="{{url_for('.static', filename='css/owl.carousel.min.css')}}">
+      <link rel="stylesheet" href="{{url_for('.static', filename='css/owl.theme.default.min.css')}}">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+      <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333;">
+         <li style="float: left;"><a class="active" href="home" style="display: block; color: white;padding: 14px 16px;">Home</a></li>
+         <li style="float: left;"><a href="face" style="display: block; color: white;padding: 14px 16px;">Face</a></li>
+         <li style="float: left;"><a href="voice" style="display: block; color: white;padding: 14px 16px;">Voice</a></li>
+         <li style="float: left;"><a href="tests" style="display: block; color: white;padding: 14px 16px;">Tests</a></li>
+     </ul>
+      <!-- news section start -->
+      <div class="news_section layout_padding">
+         <div class="container">
+            <div id="main_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <h1 class="news_taital">Tests</h1>
+                     <p class="news_text">Tests for various disorders</p>
+                     <div class="news_section_2 layout_padding">
+                        <div class="box_main">
+                           <div class="image_1"><img src="{{url_for('.static', filename='images/anxiety.jpg')}}"></div>
+                           <h2 class="design_text">Anxiety Test</h2>
+                           <p class="lorem_text">Anxiety Disorder test <br>
+                              Take our short online anxiety screening test, and learn whether you may be living with excessive anxiety.</p>
+                           <div class="read_btn"><a href="question_anxiety">Take Test</a></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item"><h1 class="news_taital">Tests</h1>
+                     <p class="news_text">Tests for various disorders</p><h1 class="news_taital"></h1>
+                     <p class="news_text"></p>
+                     <div class="news_section_2 layout_padding">
+                        <div class="box_main">
+                           <div class="image_1"><img src="{{url_for('.static', filename='images/depression.jpg')}}"></div>
+                           <h2 class="design_text">Depression Test</h2>
+                           <p class="lorem_text">Wondering if it’s just a phase or something more? Take our short online depression test to find out if you’re living with depression.</p>
+                           <div class="read_btn"><a href="question_dep">Take Test</a></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item"><h1 class="news_taital">Tests</h1>
+                     <p class="news_text">Tests for various disorders</p><h1 class="news_taital"></h1>
+                     <p class="news_text"></p>
+                     <div class="news_section_2 layout_padding">
+                        <div class="box_main">
+                           <div class="image_1"><img src="{{url_for('.static', filename='images/social_anxiety.png')}}"></div>
+                           <h2 class="design_text">Social Anxiety test</h2>
+                           <p class="lorem_text">Take our short online social anxiety disorder test, and learn whether you may be living with social anxiety disorder.</p>
+                           <div class="read_btn"><a href="question_soc">Take Test</a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <a class="carousel-control-prev" href="#main_slider" role="button" data-slide="prev">
+               <i class="fa fa-angle-left"></i>
+               </a>
+               <a class="carousel-control-next" href="#main_slider" role="button" data-slide="next">
+               <i class="fa fa-angle-right"></i>
+               </a>
+            </div>
+            </div>
+         </div>
+      </div>
+      
+     
+      <!-- copyright section end -->
+      <!-- Javascript files-->
+      <script src="{{url_for('.static', filename='js/jquery.min.js')}}"></script>
+      <script src="{{url_for('.static', filename='js/popper.min.js')}}"></script>
+      <script src="{{url_for('.static', filename='js/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{url_for('.static', filename='js/jquery-3.0.0.min.js')}}"></script>
+      <script src="{{url_for('.static', filename='js/plugin.js')}}"></script>
+      <!-- sidebar -->
+      <script src="{{url_for('.static', filename='js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+      <script src="{{url_for('.static', filename='js/custom.js')}}"></script>
+      <!-- javascript --> 
+      <script src="{{url_for('.static', filename='js/owl.carousel.js')}}"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".fancybox").fancybox({
+         openEffect: "none",
+         closeEffect: "none"
+         });
+              
+         $(".zoom").hover(function(){
+              
+         $(this).addClass('transition');
+         }, function(){
+              
+         $(this).removeClass('transition');
+         });
+         });
+      </script> 
+      <script>
+         function openNav() {
+         document.getElementById("myNav").style.width = "100%";
+         }
+         function closeNav() {
+         document.getElementById("myNav").style.width = "0%";
+         }
+      </script>  
+   </body>
+</html>

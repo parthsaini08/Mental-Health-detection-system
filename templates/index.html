@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='index.css')}}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+{% endblock %}
+<style>
+  *{
+    background: {{url_for('.static', filename='images/background.jpg')}}
+  }
+</style>
+{% block content%}
+<ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="face">Face</a></li>
+    <li><a href="voice">Voice</a></li>
+    <li><a href="tests">Tests</a></li>
+  </ul>
+  <center><h2>Mental Health Detection System</h2></center>
+<h3>Major Project II</h3>
+
+
+{% endblock %}
