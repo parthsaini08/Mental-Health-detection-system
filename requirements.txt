@@ -27,7 +27,6 @@ wrapt==1.12.1
 gunicorn==20.1.0
 Flask==2.1.3
 Flask-Bootstrap==3.3.7.1
-sounddevice==0.2.1
 opencv-python==4.3.0.36
 protobuf==3.12.2
-
+SpeechRecognition==3.9.0
