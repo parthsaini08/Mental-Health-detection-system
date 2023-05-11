@@ -1,8 +1,9 @@
 from re import split
 from flask import Flask,render_template,request 
 from flask_bootstrap import Bootstrap
+import test
 import videoTester
-import sounddevice as sd
+import speech_recognition as sr
 import voiceAnalyzer
 import time
 import numpy as np
@@ -59,45 +60,14 @@ def qs():
 
 @app.route('/voice_recording')
 def voice_recording():
-
-    # Define the recording parameters
-    duration = 5  # Duration of the recording in seconds
-    sample_rate = 44100  # Sample rate (number of samples per second)
-    channels = 2  # Number of audio channels (1 for mono, 2 for stereo)
-
-    # Initialize the recording stream
-    stream = sd.InputStream(samplerate=sample_rate, channels=channels)
-
-    # Start the recording
-    print("Recording started...")
-    stream.start()
-
-    # Create an empty array to store the recorded audio data
-    frames = []
-
-    # Callback function that gets called for each audio block
-    def callback(indata, frames, time, status):
-        frames.append(indata.copy())
-
-    # Set the callback function for the stream
-    stream.callback = callback
-
-    # Wait for the specified duration
-    sd.sleep(int(duration * 1000))
-
-    # Stop the recording
-    stream.stop()
-    print("Recording stopped...")
-
-    # Convert the recorded frames to a NumPy array
-    recorded_data=[]
-    if len(frames) > 0:
-        recorded_data = np.concatenate(frames)
-
-    # Save the recorded audio to a WAV file
     output_file = "output10.wav"
-    sf.write(output_file, recorded_data, sample_rate)
-
+    duration = 4
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Recording started...")
+        audio = r.record(source, duration=duration)
+    with open(output_file, "wb") as f:
+        f.write(audio.get_wav_data())
     print(f"Recording saved to {output_file}")
     return render_template("voice.html", data = "Done recording.")
 
