@@ -1,3 +1,4 @@
+libportaudio2
 pycparser==2.20
 pyparsing==2.4.7
 python-dateutil==2.8.1
@@ -30,3 +31,4 @@ Flask-Bootstrap==3.3.7.1
 sounddevice==0.4.4
 opencv-python==4.3.0.36
 protobuf==3.12.2
+
