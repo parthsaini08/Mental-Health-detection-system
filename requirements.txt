@@ -30,3 +30,5 @@ Flask-Bootstrap==3.3.7.1
 opencv-python==4.3.0.36
 protobuf==3.12.2
 SpeechRecognition==3.9.0
+librosa==0.8.1
+pandas==1.1.2
