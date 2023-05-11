@@ -3,9 +3,11 @@ from flask import Flask,render_template,request
 from flask_bootstrap import Bootstrap
 import test
 import videoTester
+import sounddevice as sd
 import voiceAnalyzer
 import time
-import pyaudio
+import numpy as np
+import soundfile as sf
 import os
 import wave
 app = Flask(__name__)
@@ -58,42 +60,48 @@ def qs():
 
 @app.route('/voice_recording')
 def voice_recording():
-    CHUNK = 1024 
-    FORMAT = pyaudio.paInt16 #paInt8
-    CHANNELS = 2 
-    RATE = 44100 #sample rate
-    RECORD_SECONDS = 4
-    WAVE_OUTPUT_FILENAME = "output10.wav"
 
-    p = pyaudio.PyAudio()
+    # Define the recording parameters
+    duration = 5  # Duration of the recording in seconds
+    sample_rate = 44100  # Sample rate (number of samples per second)
+    channels = 2  # Number of audio channels (1 for mono, 2 for stereo)
 
-    stream = p.open(format=FORMAT,
-                    channels=CHANNELS,
-                    rate=RATE,
-                    input=True,
-                    frames_per_buffer=CHUNK) #buffer
+    # Initialize the recording stream
+    stream = sd.InputStream(samplerate=sample_rate, channels=channels)
 
-    #return render_template("voice.html", data = "Recording ....")
+    # Start the recording
+    print("Recording started...")
+    stream.start()
 
+    # Create an empty array to store the recorded audio data
     frames = []
 
-    for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
-        data = stream.read(CHUNK)
-        frames.append(data) # 2 bytes(16 bits) per channel
+    # Callback function that gets called for each audio block
+    def callback(indata, frames, time, status):
+        frames.append(indata.copy())
 
-    
+    # Set the callback function for the stream
+    stream.callback = callback
 
-    stream.stop_stream()
-    stream.close()
-    p.terminate()
+    # Wait for the specified duration
+    sd.sleep(int(duration * 1000))
 
-    wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(p.get_sample_size(FORMAT))
-    wf.setframerate(RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+    # Stop the recording
+    stream.stop()
+    print("Recording stopped...")
+
+    # Convert the recorded frames to a NumPy array
+    recorded_data=[]
+    if len(frames) > 0:
+        recorded_data = np.concatenate(frames)
+
+    # Save the recorded audio to a WAV file
+    output_file = "output10.wav"
+    sf.write(output_file, recorded_data, sample_rate)
+
+    print(f"Recording saved to {output_file}")
     return render_template("voice.html", data = "Done recording.")
+
 
 @app.route('/voice_analyzer', methods = ['GET', 'POST'])
 def voice_analyzeer():
